@@ -1,0 +1,547 @@
+{
+	"info": {
+		"_postman_id": "0c459beb-eb2a-41f2-89f6-d392230846f5",
+		"name": "P360 Workflow Sanitized",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0. Search Patient",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Patient",
+						"HG_PATIENT_RESOURCE_ID"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. Create Patient",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"identifier\": [\r\n        {\r\n            \"use\": \"usual\",\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"http://hl7.org/fhir/v2/0203\",\r\n                        \"code\": \"MR\",\r\n                        \"display\": \"Medical record number\"\r\n                    }\r\n                ],\r\n                \"text\": \"Medical record number\"\r\n            },\r\n            \"system\": \"https://www.healthgorilla.com\",\r\n            \"value\": \"14455\"\r\n        },\r\n        {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"http://hl7.org/fhir/v2/0203\",\r\n                        \"code\": \"MR\",\r\n                        \"display\": \"Medical record number\"\r\n                    }\r\n                ],\r\n                \"text\": \"Medical record number\"\r\n            },\r\n            \"value\": \"035674444\"\r\n        }\r\n    ],\r\n\"name\": [\r\n    {\r\n      \"use\": \"usual\",\r\n      \"family\": \"Test1\",\r\n      \"given\": [\r\n        \"Joe\"\r\n      ]\r\n    }\r\n  ],\r\n      \"address\": [\r\n                    {\r\n                      \"use\": \"home\",\r\n                      \"type\": \"both\",\r\n                      \"text\": \"227 Pennsylvania Ave. Santa Monica,  CA 90402\",\r\n                      \"line\": [\r\n                        \"225 Santa Monica Blvd\"\r\n                      ],\r\n                      \"city\": \"Monica\",\r\n                      \"state\": \"CA\",\r\n                      \"postalCode\": \"90402\",\r\n                      \"period\": {\r\n                        \"start\": \"1988-10-15\"\r\n                      }\r\n                    }\r\n                  ],\r\n\"gender\": \"male\",\r\n\"birthDate\": \"1990-06-08\",\r\n\r\n        \"telecom\": [\r\n      {\r\n      \"use\": \"home\"\r\n    },\r\n    {\r\n      \"system\": \"phone\",\r\n      \"value\": \"(408) 736 6469\",\r\n      \"use\": \"work\",\r\n      \"rank\": 2\r\n    },\r\n    {\r\n      \"system\": \"phone\",\r\n      \"value\": \"(408) 394 1330\",\r\n      \"use\": \"mobile\",\r\n      \"rank\": 1\r\n    },\r\n\t  {\r\n      \"system\": \"email\",\r\n      \"value\": \"JoeTest@Testemail.com\",\r\n      \"use\": \"work\"\r\n    }\r\n  ],\r\n   \r\n\"resourceType\": \"Patient\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Patient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.  Search for Patient in Commonwell",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer YOUR ACCESS TOKEN"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HEALTH_GORILLA_ID/$cw-search",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Patient",
+						"HEALTH_GORILLA_ID",
+						"$cw-search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2b. Look up patient in CommonWell",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer YOUR ACCESS TOKEN"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID/$cw-search",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Patient",
+						"HG_PATIENT_RESOURCE_ID",
+						"$cw-search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Enroll Patient into Commonwell",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID/$cw-enroll?person=COMMONWELL_PERSON_RESOURCE_ID",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Patient",
+						"HG_PATIENT_RESOURCE_ID",
+						"$cw-enroll"
+					],
+					"query": [
+						{
+							"key": "person",
+							"value": "COMMONWELL_PERSON_RESOURCE_ID"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Search Patient in Carequality and Commonwell",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "Prefer",
+						"value": "respond-async",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/DocumentReference/$p360-search?patient=HG_PATIENT_RESOURCE_ID",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"DocumentReference",
+						"$p360-search"
+					],
+					"query": [
+						{
+							"key": "patient",
+							"value": "HG_PATIENT_RESOURCE_ID"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4b. Get Async Requests",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/URL_FROM_STEP_4",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"URL_FROM_STEP_4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Import patient 360 documents into Health Gorilla",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Prefer",
+						"value": "respond-async",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"resourceType\":\"Bundle\",\r\n   \"id\":\"batch\",\r\n   \"type\":\"batch\",\r\n   \"entry\":[\r\n      {\r\n        \r\n\"resource\": {\r\n                \"resourceType\": \"DocumentReference\",\r\n                \"meta\": {\r\n                    \"profile\": [\r\n                        \"https://healthgorilla.com/fhir/StructureDefinition/hg-cw-document\"\r\n                    ]\r\n                },\r\n                \"contained\": [\r\n                    {\r\n                        \"resourceType\": \"PractitionerRole\",\r\n                        \"id\": \"1\",\r\n                        \"organization\": {\r\n                            \"reference\": \"#2\",\r\n                            \"display\": \"Freeman Clinic\"\r\n                        },\r\n                        \"specialty\": [\r\n                            {\r\n                                \"text\": \"Unknown\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"resourceType\": \"Organization\",\r\n                        \"id\": \"2\",\r\n                        \"identifier\": [\r\n                            {\r\n                                \"value\": \"1.3.6.1.4.1.52618.0.2\"\r\n                            }\r\n                        ],\r\n                        \"name\": \"Freeman Clinic\"\r\n                    }\r\n                ],\r\n                \"masterIdentifier\": {\r\n                    \"system\": \"urn:ietf:rfc:3986\",\r\n                    \"value\": \"epc_ebfd6c60696b94a62246f792\"\r\n                },\r\n                \"identifier\": [\r\n                    {\r\n                        \"use\": \"official\",\r\n                        \"system\": \"urn:ietf:rfc:3986\",\r\n                        \"value\": \"urn:uuid:bd44ee0b-4344-4abc-a5cb-0592e70e6923\"\r\n                    }\r\n                ],\r\n                \"status\": \"current\",\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org/\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summarization of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"class\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org/\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summarization of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subject\": {\r\n                    \"reference\": \"Patient/26fa6c606877a0d934764d6c\",\r\n                    \"display\": \"Tommy Test1\"\r\n                },\r\n                \"created\": \"2019-12-13T13:46:52+00:00\",\r\n                \"indexed\": \"2019-12-13T13:46:52.000+00:00\",\r\n                \"author\": [\r\n                    {\r\n                        \"reference\": \"#1\"\r\n                    }\r\n                ],\r\n                \"description\": \"Clinical Summary\",\r\n                \"securityLabel\": [\r\n                    {\r\n                        \"text\": \"Normal\"\r\n                    }\r\n                ],\r\n                \"content\": [\r\n                    {\r\n                        \"attachment\": {\r\n                            \"contentType\": \"application/octet-stream\",\r\n                            \"language\": \"en-us\",\r\n                            \"url\": \"https://www.healthgorilla.com/fhir/Binary/cw-a-cHN8UdWyGRxV3RtW5Hk_p3EunDgnS1BFah3Xul5ktzNHYX2IL15zd2o6YDBClhYhAq8roSAwSYP1YE3n8ONxL2jSr9JrnL_qILYSuVZnSmX6Zk1-PXjqR0WTjvFoHYtax2dYIP79n_xp2w7vVnEYX0qGs5sqSpTEcFkSQUD8GQANM2ZXsUigyIQo2uRU5sMxdD6Bpi32nEvc52Zw3nWg0v7KdB-lKeRZCQ_g9U-aRb0XFrdp6TB6ohu9zUWMy-NHrYaOmGS31jpETYlZKvJHWDtb2B_JNAEZP78VErL0qGN0kczdpUk4ia_1cS5-Vgm2jxWo46Sdb5ZnnA7HnzYrXUnYuQPeym-YAlEz2kWXBeFaDhVYC8WHIA5Ab2MEPVbk-qUx4hjZofj1hff41XHoaX_WkAfN-aMQg-W2uG2is\"\r\n                        },\r\n                        \"format\": {\r\n                            \"code\": \"urn:ihe:pcc:xphr:2007\"\r\n                        }\r\n                    }\r\n                ],\r\n                \"context\": {\r\n                    \"event\": [\r\n                        {\r\n                            \"text\": \"Problem\"\r\n                        },\r\n                        {\r\n                            \"text\": \"drug allergy\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Nausea\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Depressive disorder\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Hypothyroidism\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Sinusitis\"\r\n                        },\r\n                        {\r\n                            \"text\": \"CT of paranasal sinuses\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Left maxillary sinus mass\"\r\n                        },\r\n                        {\r\n                            \"text\": \"never a smoker\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Vital signs\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Neoplasm of accessory sinus\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Finding of functional performance and activity\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Cane\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Cognitive function finding\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Short term memory deficit\"\r\n                        }\r\n                    ],\r\n                    \"period\": {\r\n                        \"start\": \"2012-10-02T04:00:00+00:00\"\r\n                    },\r\n                    \"facilityType\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"http://snomed.info/sct\",\r\n                                \"code\": \"83891005\",\r\n                                \"display\": \"Solo practice private office\"\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            },\r\n            \"search\": {\r\n                \"mode\": \"match\"\r\n            }\r\n        },\r\n        {\r\n            \"resource\": {\r\n                \"resourceType\": \"DocumentReference\",\r\n                \"meta\": {\r\n                    \"profile\": [\r\n                        \"https://healthgorilla.com/fhir/StructureDefinition/hg-cw-document\"\r\n                    ]\r\n                },\r\n                \"contained\": [\r\n                    {\r\n                        \"resourceType\": \"PractitionerRole\",\r\n                        \"id\": \"1\",\r\n                        \"organization\": {\r\n                            \"reference\": \"#2\",\r\n                            \"display\": \"Freeman Clinic\"\r\n                        },\r\n                        \"specialty\": [\r\n                            {\r\n                                \"text\": \"Unknown\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"resourceType\": \"Organization\",\r\n                        \"id\": \"2\",\r\n                        \"identifier\": [\r\n                            {\r\n                                \"value\": \"1.3.6.1.4.1.52618.0.2\"\r\n                            }\r\n                        ],\r\n                        \"name\": \"Freeman Clinic\"\r\n                    }\r\n                ],\r\n                \"masterIdentifier\": {\r\n                    \"system\": \"urn:ietf:rfc:3986\",\r\n                    \"value\": \"epc_ebfd6c60d31023db11002feb\"\r\n                },\r\n                \"identifier\": [\r\n                    {\r\n                        \"use\": \"official\",\r\n                        \"system\": \"urn:ietf:rfc:3986\",\r\n                        \"value\": \"urn:uuid:60a389c8-8b01-4d44-80cb-87f5d46597b7\"\r\n                    }\r\n                ],\r\n                \"status\": \"current\",\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org/\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summarization of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"class\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org/\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summarization of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subject\": {\r\n                    \"reference\": \"Patient/26fa6c606877a0d934764d6c\",\r\n                    \"display\": \"Tommy Test1\"\r\n                },\r\n                \"created\": \"2019-02-13T13:46:52+00:00\",\r\n                \"indexed\": \"2019-02-13T13:46:52.000+00:00\",\r\n                \"author\": [\r\n                    {\r\n                        \"reference\": \"#1\"\r\n                    }\r\n                ],\r\n                \"description\": \"Clinical Summary\",\r\n                \"securityLabel\": [\r\n                    {\r\n                        \"text\": \"Normal\"\r\n                    }\r\n                ],\r\n                \"content\": [\r\n                    {\r\n                        \"attachment\": {\r\n                            \"contentType\": \"application/xml\",\r\n                            \"language\": \"en-us\",\r\n                            \"url\": \"https://www.healthgorilla.com/fhir/Binary/cw-a-cHN8UdWyGRxV3RtW5Hkw0JyATa7xCAA8nTw4D8Dmtya_Cwh2Tt6xGSuDcRoScnLvUpp-y-ZIrledwlYoytNBL2jSr9JrnL_qILYSuVZnSmX6Zk1-PXjqR0WTjvFoHYtax2dYIP79n_xp2w7vVnEYX0qGs5sqSpTEcFkSQUD8FaDjUSdwxnTxzdRtj0Lt-A_KvOmFZPHfI_YmoMWGIaJSsluQRi8sv7yA6HmbVIYOjWUtHCsoRgxfwQco60JfUS0tYOKDFzP5VeAzfLxZKXRAF3bd_ewmvk4cPG-1-6mogDJiLYqAGVrkPuWbMTePC9yjBOZI-JvOxdqWVNOAhzvdDgLgzQt9tHZ4fuNqqjkC0q8n-PNP_gIG8IGMIHDV9v4GrzeiKx_sR2EO2M_c8c_w\"\r\n                        },\r\n                        \"format\": {\r\n                            \"code\": \"urn:ihe:pcc:xphr:2007\"\r\n                        }\r\n                    }\r\n                ],\r\n                \"context\": {\r\n                    \"event\": [\r\n                        {\r\n                            \"text\": \"Problem\"\r\n                        },\r\n                        {\r\n                            \"text\": \"drug allergy\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Nausea\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Depressive disorder\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Hypothyroidism\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Sinusitis\"\r\n                        },\r\n                        {\r\n                            \"text\": \"CT of paranasal sinuses\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Left maxillary sinus mass\"\r\n                        },\r\n                        {\r\n                            \"text\": \"never a smoker\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Vital signs\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Neoplasm of accessory sinus\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Finding of functional performance and activity\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Cane\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Cognitive function finding\"\r\n                        },\r\n                        {\r\n                            \"text\": \"Short term memory deficit\"\r\n                        }\r\n                    ],\r\n                    \"period\": {\r\n                        \"start\": \"2012-10-02T04:00:00+00:00\"\r\n                    },\r\n                    \"facilityType\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"http://snomed.info/sct\",\r\n                                \"code\": \"83891005\",\r\n                                \"display\": \"Solo practice private office\"\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            },\r\n            \"search\": {\r\n                \"mode\": \"match\"\r\n            }\r\n        },\r\n        {\r\n            \"resource\": {\r\n                \"resourceType\": \"DocumentReference\",\r\n                \"meta\": {\r\n                    \"profile\": [\r\n                        \"https://healthgorilla.com/fhir/StructureDefinition/hg-cq-document\"\r\n                    ]\r\n                },\r\n                \"contained\": [\r\n                    {\r\n                        \"resourceType\": \"Organization\",\r\n                        \"id\": \"1\",\r\n                        \"identifier\": [\r\n                            {\r\n                                \"type\": {\r\n                                    \"coding\": [\r\n                                        {\r\n                                            \"code\": \"hcid\",\r\n                                            \"display\": \"Home Community ID\"\r\n                                        }\r\n                                    ],\r\n                                    \"text\": \"Home Community ID\"\r\n                                },\r\n                                \"value\": \"1.3.6.1.4.1.52618.0.11\"\r\n                            }\r\n                        ],\r\n                        \"name\": \"Garden Health Center\"\r\n                    }\r\n                ],\r\n                \"extension\": [\r\n                    {\r\n                        \"url\": \"https://www.healthgorilla.com/fhir/StructureDefinition/documentreference-ondemand\",\r\n                        \"valueBoolean\": true\r\n                    }\r\n                ],\r\n                \"status\": \"current\",\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summary of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subject\": {\r\n                    \"reference\": \"Patient/26fa6c606877a0d934764d6c\",\r\n                    \"display\": \"Tommy Test1\"\r\n                },\r\n                \"created\": \"2018-08-03T09:55:44+00:00\",\r\n                \"indexed\": \"2018-08-03T09:55:44.000+00:00\",\r\n                \"custodian\": {\r\n                    \"reference\": \"#1\",\r\n                    \"display\": \"Garden Health Center\"\r\n                },\r\n                \"description\": \"Continuity of Care Document 6\",\r\n                \"content\": [\r\n                    {\r\n                        \"attachment\": {\r\n                            \"contentType\": \"text/xml\",\r\n                            \"url\": \"https://www.healthgorilla.com/fhir/Binary/cq-6NPeUyZWgSxfJzdc0XqJJdLLwGn3sMAAxlC4D_BhEe1u_vo58MbHv6zocUnHpPC2a9kaUNYnaIO6Bqga9ZqYjtqpsqO1MB1tTjCISsG1VpkUX_JviTgFYo5yp4RlCmQgQVg9huCj7GM9ejBrg18gxxSf7qoWdPCtE0nwrE9YZm40r3j9W1TTNqpT6s6pWSg4jgT9AtPgn4Emp3WAaWr4_DF6IL7Loue8YLWakQJ-f5wxz-Y67uD2fQY2neU9E_kZaYbs3tMVXrFFlCTaaYbBIMbzy9w0u5915C17JbMq7wZQt0Xdp4llt0AIhMrcAblgkFeFo-WrfIxLNF5G4NVQVPi0hc0lriy-5tjJaEHv6pM\"\r\n                        }\r\n                    }\r\n                ]\r\n            },\r\n            \"search\": {\r\n                \"mode\": \"match\"\r\n            }\r\n        },\r\n        {\r\n            \"resource\": {\r\n                \"resourceType\": \"DocumentReference\",\r\n                \"meta\": {\r\n                    \"profile\": [\r\n                        \"https://healthgorilla.com/fhir/StructureDefinition/hg-cq-document\"\r\n                    ]\r\n                },\r\n                \"contained\": [\r\n                    {\r\n                        \"resourceType\": \"Organization\",\r\n                        \"id\": \"1\",\r\n                        \"identifier\": [\r\n                            {\r\n                                \"type\": {\r\n                                    \"coding\": [\r\n                                        {\r\n                                            \"code\": \"hcid\",\r\n                                            \"display\": \"Home Community ID\"\r\n                                        }\r\n                                    ],\r\n                                    \"text\": \"Home Community ID\"\r\n                                },\r\n                                \"value\": \"1.3.6.1.4.1.52618.0.11\"\r\n                            }\r\n                        ],\r\n                        \"name\": \"Garden Health Center\"\r\n                    }\r\n                ],\r\n                \"extension\": [\r\n                    {\r\n                        \"url\": \"https://www.healthgorilla.com/fhir/StructureDefinition/documentreference-ondemand\",\r\n                        \"valueBoolean\": true\r\n                    }\r\n                ],\r\n                \"status\": \"current\",\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summary of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subject\": {\r\n                    \"reference\": \"Patient/26fa6c606877a0d934764d6c\",\r\n                    \"display\": \"Tommy Test1\"\r\n                },\r\n                \"created\": \"2016-07-15T15:15:14+00:00\",\r\n                \"indexed\": \"2016-07-15T15:15:14.000+00:00\",\r\n                \"custodian\": {\r\n                    \"reference\": \"#1\",\r\n                    \"display\": \"Garden Health Center\"\r\n                },\r\n                \"description\": \"Continuity of Care Document 10\",\r\n                \"content\": [\r\n                    {\r\n                        \"attachment\": {\r\n                            \"contentType\": \"text/xml\",\r\n                            \"url\": \"https://www.healthgorilla.com/fhir/Binary/cq-6NPeUyZWgSxfJzdc0XqJJdLLwGn3sMAAxlC4D_BhEe1u_vo58MbHv6zocUnHpPC2a9kaUNYnaIO6Bqga9ZqYjtqpsqO1MB1tTjCISsG1VpkUX_JviTgFYo5yp4RlCmQgQVg9huCj7GM9ejBrg18gxxSf7qoWdPCtE0nwrE9YZm5mDembNnEbkpAkOZoEQyWpGIDESQct4gvAhnsL7-Fwq4wceQBVXuUtEnJ1EC2oyO8UX_JviTgFYo5yp4RlCmQgaypcOni_tst-8Ontv2AjfkJUaF0KgtS9RUCPRqYXCTQeJYZI-uOzklUUKIN1Wo4QIvCJBUZYH0nAg9g-zwYQNrTfm_CGFrvT1U2Hmsqd55Q\"\r\n                        }\r\n                    }\r\n                ]\r\n            },\r\n            \"search\": {\r\n                \"mode\": \"match\"\r\n            }\r\n        },\r\n        {\r\n            \"resource\": {\r\n                \"resourceType\": \"DocumentReference\",\r\n                \"meta\": {\r\n                    \"profile\": [\r\n                        \"https://healthgorilla.com/fhir/StructureDefinition/hg-cq-document\"\r\n                    ]\r\n                },\r\n                \"contained\": [\r\n                    {\r\n                        \"resourceType\": \"Organization\",\r\n                        \"id\": \"1\",\r\n                        \"identifier\": [\r\n                            {\r\n                                \"type\": {\r\n                                    \"coding\": [\r\n                                        {\r\n                                            \"code\": \"hcid\",\r\n                                            \"display\": \"Home Community ID\"\r\n                                        }\r\n                                    ],\r\n                                    \"text\": \"Home Community ID\"\r\n                                },\r\n                                \"value\": \"1.3.6.1.4.1.52618.0.10\"\r\n                            }\r\n                        ],\r\n                        \"name\": \"Springfield Hospital\"\r\n                    }\r\n                ],\r\n                \"extension\": [\r\n                    {\r\n                        \"url\": \"https://www.healthgorilla.com/fhir/StructureDefinition/documentreference-ondemand\",\r\n                        \"valueBoolean\": true\r\n                    }\r\n                ],\r\n                \"status\": \"current\",\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summary of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subject\": {\r\n                    \"reference\": \"Patient/26fa6c606877a0d934764d6c\",\r\n                    \"display\": \"Tommy Test1\"\r\n                },\r\n                \"created\": \"2001-11-24T09:25:04+00:00\",\r\n                \"indexed\": \"2001-11-24T09:25:04.000+00:00\",\r\n                \"custodian\": {\r\n                    \"reference\": \"#1\",\r\n                    \"display\": \"Springfield Hospital\"\r\n                },\r\n                \"description\": \"Continuity of Care Document 4\",\r\n                \"content\": [\r\n                    {\r\n                        \"attachment\": {\r\n                            \"contentType\": \"text/xml\",\r\n                            \"url\": \"https://www.healthgorilla.com/fhir/Binary/cq-6NPeUyZWgSxfJzdc0XqJJdLLwGn3sMAAxlC4D_BhEe2TTANslC8WAdfhyIPhvzGga9kaUNYnaIO6Bqga9ZqYjtqpsqO1MB1tTjCISsG1VpkUX_JviTgFYo5yp4RlCmQgZV0Hw5lEcXMXlpBA1lIONBSf7qoWdPCtE0nwrE9YZm52F3UweAYq9BLpvNPc5XRPjgT9AtPgn4Emp3WAaWr4_DF6IL7Loue8YLWakQJ-f5wxz-Y67uD2fQY2neU9E_kZdhadBsIziCXUkxvDSK9qYMbzy9w0u5915C17JbMq7wZQt0Xdp4llt0AIhMrcAblgkFeFo-WrfIxLNF5G4NVQVPi0hc0lriy-5tjJaEHv6pM\"\r\n                        }\r\n                    }\r\n                ]\r\n            },\r\n            \"search\": {\r\n                \"mode\": \"match\"\r\n            }\r\n        },\r\n        {\r\n            \"resource\": {\r\n                \"resourceType\": \"DocumentReference\",\r\n                \"meta\": {\r\n                    \"profile\": [\r\n                        \"https://healthgorilla.com/fhir/StructureDefinition/hg-cq-document\"\r\n                    ]\r\n                },\r\n                \"contained\": [\r\n                    {\r\n                        \"resourceType\": \"Organization\",\r\n                        \"id\": \"1\",\r\n                        \"identifier\": [\r\n                            {\r\n                                \"type\": {\r\n                                    \"coding\": [\r\n                                        {\r\n                                            \"code\": \"hcid\",\r\n                                            \"display\": \"Home Community ID\"\r\n                                        }\r\n                                    ],\r\n                                    \"text\": \"Home Community ID\"\r\n                                },\r\n                                \"value\": \"1.3.6.1.4.1.52618.0.10\"\r\n                            }\r\n                        ],\r\n                        \"name\": \"Springfield Hospital\"\r\n                    }\r\n                ],\r\n                \"extension\": [\r\n                    {\r\n                        \"url\": \"https://www.healthgorilla.com/fhir/StructureDefinition/documentreference-ondemand\",\r\n                        \"valueBoolean\": true\r\n                    }\r\n                ],\r\n                \"status\": \"current\",\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summary of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subject\": {\r\n                    \"reference\": \"Patient/26fa6c606877a0d934764d6c\",\r\n                    \"display\": \"Tommy Test1\"\r\n                },\r\n                \"created\": \"2011-12-12T15:44:34+00:00\",\r\n                \"indexed\": \"2011-12-12T15:44:34.000+00:00\",\r\n                \"custodian\": {\r\n                    \"reference\": \"#1\",\r\n                    \"display\": \"Springfield Hospital\"\r\n                },\r\n                \"description\": \"Continuity of Care Document 5\",\r\n                \"content\": [\r\n                    {\r\n                        \"attachment\": {\r\n                            \"contentType\": \"text/xml\",\r\n                            \"url\": \"https://www.healthgorilla.com/fhir/Binary/cq-6NPeUyZWgSxfJzdc0XqJJdLLwGn3sMAAxlC4D_BhEe2TTANslC8WAdfhyIPhvzGga9kaUNYnaIO6Bqga9ZqYjtqpsqO1MB1tTjCISsG1VpkUX_JviTgFYo5yp4RlCmQgZV0Hw5lEcXMXlpBA1lIONBSf7qoWdPCtE0nwrE9YZm6-kO2oglHcNNxDv3qn7w5GjgT9AtPgn4Emp3WAaWr4_DF6IL7Loue8YLWakQJ-f5wxz-Y67uD2fQY2neU9E_kZdhadBsIziCXUkxvDSK9qYMbzy9w0u5915C17JbMq7wZQt0Xdp4llt0AIhMrcAblgkFeFo-WrfIxLNF5G4NVQVPi0hc0lriy-5tjJaEHv6pM\"\r\n                        }\r\n                    }\r\n                ]\r\n            },\r\n            \"search\": {\r\n                \"mode\": \"match\"\r\n            }\r\n        },\r\n        {\r\n            \"resource\": {\r\n                \"resourceType\": \"DocumentReference\",\r\n                \"meta\": {\r\n                    \"profile\": [\r\n                        \"https://healthgorilla.com/fhir/StructureDefinition/hg-cq-document\"\r\n                    ]\r\n                },\r\n                \"contained\": [\r\n                    {\r\n                        \"resourceType\": \"Organization\",\r\n                        \"id\": \"1\",\r\n                        \"identifier\": [\r\n                            {\r\n                                \"type\": {\r\n                                    \"coding\": [\r\n                                        {\r\n                                            \"code\": \"hcid\",\r\n                                            \"display\": \"Home Community ID\"\r\n                                        }\r\n                                    ],\r\n                                    \"text\": \"Home Community ID\"\r\n                                },\r\n                                \"value\": \"1.3.6.1.4.1.52618.0.11\"\r\n                            }\r\n                        ],\r\n                        \"name\": \"Garden Health Center\"\r\n                    }\r\n                ],\r\n                \"extension\": [\r\n                    {\r\n                        \"url\": \"https://www.healthgorilla.com/fhir/StructureDefinition/documentreference-ondemand\",\r\n                        \"valueBoolean\": true\r\n                    }\r\n                ],\r\n                \"status\": \"current\",\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"http://loinc.org\",\r\n                            \"code\": \"34133-9\",\r\n                            \"display\": \"Summary of episode note\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"subject\": {\r\n                    \"reference\": \"Patient/26fa6c606877a0d934764d6c\",\r\n                    \"display\": \"Tommy Test1\"\r\n                },\r\n                \"created\": \"2012-10-01T01:15:34+00:00\",\r\n                \"indexed\": \"2012-10-01T01:15:34.000+00:00\",\r\n                \"custodian\": {\r\n                    \"reference\": \"#1\",\r\n                    \"display\": \"Garden Health Center\"\r\n                },\r\n                \"description\": \"Continuity of Care Document 8\",\r\n                \"content\": [\r\n                    {\r\n                        \"attachment\": {\r\n                            \"contentType\": \"text/xml\",\r\n                            \"url\": \"https://www.healthgorilla.com/fhir/Binary/cq-6NPeUyZWgSxfJzdc0XqJJdLLwGn3sMAAxlC4D_BhEe1u_vo58MbHv6zocUnHpPC2a9kaUNYnaIO6Bqga9ZqYjtqpsqO1MB1tTjCISsG1VpkUX_JviTgFYo5yp4RlCmQgQVg9huCj7GM9ejBrg18gxxSf7qoWdPCtE0nwrE9YZm6MMkWmFXZbQxcpNBeM8wwWjgT9AtPgn4Emp3WAaWr4_DF6IL7Loue8YLWakQJ-f5wxz-Y67uD2fQY2neU9E_kZaYbs3tMVXrFFlCTaaYbBIMbzy9w0u5915C17JbMq7wZQt0Xdp4llt0AIhMrcAblgkFeFo-WrfIxLNF5G4NVQVPi0hc0lriy-5tjJaEHv6pM\"\r\n                        }\r\n                    }\r\n                ]\r\n           },\r\n            \"search\": {\r\n                \"mode\": \"match\"\r\n            }\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Bundle",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Bundle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Mark Patient Record Enrolled",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID/$enrollForUpdates?enroll=true",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Patient",
+						"HG_PATIENT_RESOURCE_ID",
+						"$enrollForUpdates"
+					],
+					"query": [
+						{
+							"key": "enroll",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Get CCDA in XML Format",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Prefer",
+						"value": "respond-async",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID/$export-ccda",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Patient",
+						"HG_PATIENT_RESOURCE_ID",
+						"$export-ccda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7b. Get Async CCDA",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/URL_FROM_STEP_7",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"URL_FROM_STEP_7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Get Entire Patient Chart in JSON Format",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YOUR ACCESS TOKEN",
+						"type": "text"
+					},
+					{
+						"key": "Contect-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID/$everything",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"Patient",
+						"HG_PATIENT_RESOURCE_ID",
+						"$everything"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Access Token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "HG Client ID Provided to You",
+							"type": "text"
+						},
+						{
+							"key": "assertion",
+							"value": "Assertion",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "user/*.* patient360",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://sandbox.healthgorilla.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"sandbox",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
