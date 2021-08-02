@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Create JWT</title>
+    
+    
+</head>
+<body>
+    <h2>Create a Token</h2>
+    <form name='jwt' action=''>
+        <label for='audience'>Audience:
+            <input size="50" type='text' id='audience' name='audience' value='https://sandbox.healthgorilla.com/oauth/token' maxlength=200>
+        </label>
+        <br><br><br>
+        <label for='issuer'>Issuer:
+            <input size="50" type='text' id='issuer' name='issuer' placeholder="clients website" maxlength=200>
+        </label>
+        <br><br><br>
+        <label for='sub'>Sub:
+            <input size="50" type='text' id='sub' name='sub' placeholder="login info" maxlength=200>
+        </label>
+        <br><br><br>
+        <label for='sub'>Expiration:
+            <input type='date' id='expiration' name='expiration'>
+        </label>
+        <br><br><label for='secret'>Secret:
+            <input size="60" type='text' id='secret' name='secret' maxlength=300>
+        </label>
+        <br><br>
+        <button type='submit'>Create Token</button>
+    </form>
+    <br><br><br>
+    <div id="token" width="50"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script>
+        const form = document.forms['jwt'];
+const sub = form.sub;
+const audience = form.audience;
+const issuer = form.issuer;
+const expiration = form.expiration;
+const formssecret = form.secret;
+form.addEventListener ('submit', createToken, false);
+
+function base64url(source) {
+    // Encode in classical base64
+    encodedSource = CryptoJS.enc.Base64.stringify(source);
+  
+    // Remove padding equal characters
+    encodedSource = encodedSource.replace(/=+$/, '');
+  
+    // Replace characters according to base64url specifications
+    encodedSource = encodedSource.replace(/\+/g, '-');
+    encodedSource = encodedSource.replace(/\//g, '_');
+  
+    return encodedSource;
+  }
+  
+
+
+function createToken(event) {
+    event.preventDefault();
+    
+    expirationDate = new Date(expiration.value).getTime();
+    
+    var header = {
+        "alg": "HS256",
+        "typ": "JWT"
+    };
+    var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));
+    var encodedHeader = base64url(stringifiedHeader);
+    
+    var data = {
+        "aud": audience.value,
+        "iss": issuer.value,
+        "sub": sub.value,
+        "iat": Date.now(),
+        "exp": expirationDate
+    };
+
+    var stringifiedData = CryptoJS.enc.Utf8.parse(JSON.stringify(data));
+    var encodedData = base64url(stringifiedData);
+
+    var token = encodedHeader + "." + encodedData;
+
+    var secret = formssecret.value;
+
+    var signature = CryptoJS.HmacSHA256(token, secret);
+    signature = base64url(signature);
+
+    var signedToken = token + "." + signature;
+    document.getElementById("token").innerHTML = "Your signed token is<br>" + signedToken;
+
+}
+    </script>
+</body>
+</html>
