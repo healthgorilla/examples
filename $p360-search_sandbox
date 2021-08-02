@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "0c459beb-eb2a-41f2-89f6-d392230846f5",
-		"name": "P360 Workflow Sanitized",
+		"name": "$p360-search (Sandbox)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -98,7 +98,7 @@
 			"response": []
 		},
 		{
-			"name": "2.  Search for Patient in Commonwell",
+			"name": "2.  Search for Patient in CommonWell",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -130,7 +130,7 @@
 			"response": []
 		},
 		{
-			"name": "2b. Look up patient in CommonWell",
+			"name": "2b. Check if Patient is enrolled in CommonWell",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -144,7 +144,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID/$cw-search",
+					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID/$cw-lookup",
 					"protocol": "https",
 					"host": [
 						"sandbox",
@@ -162,7 +162,7 @@
 			"response": []
 		},
 		{
-			"name": "3. Enroll Patient into Commonwell",
+			"name": "3. Enroll Patient into CommonWell",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -206,7 +206,7 @@
 			"response": []
 		},
 		{
-			"name": "4. Search Patient in Carequality and Commonwell",
+			"name": "4. Search Patient in Patient360 network",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -277,7 +277,7 @@
 			"response": []
 		},
 		{
-			"name": "5. Import patient 360 documents into Health Gorilla",
+			"name": "5. Import Patient360 documents into Health Gorilla",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -321,42 +321,7 @@
 			"response": []
 		},
 		{
-			"name": "6. Mark Patient Record Enrolled",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer YOUR ACCESS TOKEN",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://sandbox.healthgorilla.com/fhir/Patient/HG_PATIENT_RESOURCE_ID/$enrollForUpdates?enroll=true",
-					"protocol": "https",
-					"host": [
-						"sandbox",
-						"healthgorilla",
-						"com"
-					],
-					"path": [
-						"fhir",
-						"Patient",
-						"HG_PATIENT_RESOURCE_ID",
-						"$enrollForUpdates"
-					],
-					"query": [
-						{
-							"key": "enroll",
-							"value": "true"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "7. Get CCDA in XML Format",
+			"name": "6a. Export Patient record as C-CDA CCD document",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -398,7 +363,7 @@
 			"response": []
 		},
 		{
-			"name": "7b. Get Async CCDA",
+			"name": "6b. Get Async CCDA",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -432,7 +397,7 @@
 			"response": []
 		},
 		{
-			"name": "8. Get Entire Patient Chart in JSON Format",
+			"name": "7. Retrieve all Patient clinical information in JSON Format",
 			"request": {
 				"auth": {
 					"type": "noauth"
