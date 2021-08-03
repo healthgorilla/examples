@@ -29,9 +29,9 @@ function cwEnroll($type,$patientId = null, $cwId = null) {
     global $token;
     $curl = curl_init();
     if ($type == 'new') {
-        $url = 'https://api.healthgorilla.com/fhir/Patient/'.$patientId.'/$cw-enroll';
+        $url = 'https://sandbox.healthgorilla.com/fhir/Patient/'.$patientId.'/$cw-enroll';
     } elseif ($type == 'match') {
-        $url = 'https://api.healthgorilla.com/fhir/Patient/'.$patientId.'/$cw-enroll?person='.$cwId;
+        $url = 'https://sandbox.healthgorilla.com/fhir/Patient/'.$patientId.'/$cw-enroll?person='.$cwId;
     }
     curl_setopt_array($curl, array(
         CURLOPT_URL => $url,
@@ -71,7 +71,7 @@ function cwSearch($patientId = null) {
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://api.healthgorilla.com/fhir/Patient/'.$patientId.'/$cw-search',
+        CURLOPT_URL => 'https://sandbox.healthgorilla.com/fhir/Patient/'.$patientId.'/$cw-search',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -121,7 +121,7 @@ function cwLookup($patientId = null) {
     //lookup to see if they are already enrolled in CW
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://api.healthgorilla.com/fhir/Patient/'.$patientId.'/$cw-lookup',
+        CURLOPT_URL => 'https://sandbox.healthgorilla.com/fhir/Patient/'.$patientId.'/$cw-lookup',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -157,7 +157,7 @@ function asyncSearch($patientID = null) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://api.healthgorilla.com/fhir/DocumentReference/$cw-search?patient='.$patientID.'&_format=json',
+        CURLOPT_URL => 'https://sandbox.healthgorilla.com/fhir/DocumentReference/$cw-search?patient='.$patientID.'&_format=json',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -208,7 +208,7 @@ function getAsyncResults($searchLocation = null, $patientId = null) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.healthgorilla.com'. $searchLocation,
+            CURLOPT_URL => 'https://sandbox.healthgorilla.com'. $searchLocation,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -299,8 +299,6 @@ function processResults($results = null, $patientId = null) {
         }
     }// endforeach ($results['entry'] as $entry)
     return true;
-    
-    
 }
 
 function process_Patients() {

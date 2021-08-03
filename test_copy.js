@@ -6,15 +6,13 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const axios = require('axios');
 const results = [];
 
-const BASE_URL = 'https://www.sandbox.healthgorilla.com/fhir/';
+const BASE_URL = 'https://sandbox.healthgorilla.com/fhir/';
 
 const httpClient = axios.create({
     baseURL: BASE_URL,
     headers: {
         Authorization: 'Bearer ',
-        'Content-Type': 'application/json',
-        Cookie:
-            'AWSALB=072pN8XOPnCD25v5qzG9TUr0VhWHhQOPNVznMUZ25Pe2bltxVGOm9HuhPHoeaOFk7pgA5pUgnMnCrfmeRxJTxgPdistgWUsaqRO+YCPd1m0xRc2jJIeiDYmwJNh7; AWSALBCORS=072pN8XOPnCD25v5qzG9TUr0VhWHhQOPNVznMUZ25Pe2bltxVGOm9HuhPHoeaOFk7pgA5pUgnMnCrfmeRxJTxgPdistgWUsaqRO+YCPd1m0xRc2jJIeiDYmwJNh7; hg.lang=en',
+        'Content-Type': 'application/json'
     },
 });
 
@@ -84,8 +82,6 @@ fs.createReadStream('report.csv')
                 headers: {
                     Authorization: 'Bearer ',
                     'Content-Type': 'application/json',
-                    Cookie:
-                        'AWSALB=072pN8XOPnCD25v5qzG9TUr0VhWHhQOPNVznMUZ25Pe2bltxVGOm9HuhPHoeaOFk7pgA5pUgnMnCrfmeRxJTxgPdistgWUsaqRO+YCPd1m0xRc2jJIeiDYmwJNh7; AWSALBCORS=072pN8XOPnCD25v5qzG9TUr0VhWHhQOPNVznMUZ25Pe2bltxVGOm9HuhPHoeaOFk7pgA5pUgnMnCrfmeRxJTxgPdistgWUsaqRO+YCPd1m0xRc2jJIeiDYmwJNh7; hg.lang=en',
                 },
                 data: data,
             };
@@ -102,8 +98,6 @@ fs.createReadStream('report.csv')
                             headers: {
                                 Authorization: 'Bearer ',
                                 'Content-Type': 'application/json',
-                                Cookie:
-                                    'AWSALB=qGKJ8c8UO/cAxye8PVgvwStJEuSAfMBusAWgoTNtD11GmcwyLXws+/FeJ/XSotNcb9YBiK4UdXra84w88MGGVerQeSAbBnVTfgQB/VErUum7FJySYNZMFhvNbm53; AWSALBCORS=qGKJ8c8UO/cAxye8PVgvwStJEuSAfMBusAWgoTNtD11GmcwyLXws+/FeJ/XSotNcb9YBiK4UdXra84w88MGGVerQeSAbBnVTfgQB/VErUum7FJySYNZMFhvNbm53; hg.lang=en',
                             },
                         };
                         axios(configGetCsv)
@@ -124,9 +118,7 @@ fs.createReadStream('report.csv')
                                     method: 'get',
                                     url: `https://sandbox.healthgorilla.com/fhir/Patient/${pId}/$cw-search?_format=json`,
                                     headers: {
-                                        Authorization: 'Bearer ',
-                                        Cookie:
-                                            'AWSALB=syoh1PBOZ8R+XgCQL8ymQu8G7zCy2+V4eSDj6TBriyaEcyZw8LFzrYa/cFSbugghj71C/9mdDUVNGpVGq+8EGQVjAxComjaj255RlDvjfWaJx6tnL5JJbQflKREG; AWSALBCORS=syoh1PBOZ8R+XgCQL8ymQu8G7zCy2+V4eSDj6TBriyaEcyZw8LFzrYa/cFSbugghj71C/9mdDUVNGpVGq+8EGQVjAxComjaj255RlDvjfWaJx6tnL5JJbQflKREG; hg.lang=en',
+                                        Authorization: 'Bearer '
                                     },
                                 };
 
@@ -144,9 +136,7 @@ fs.createReadStream('report.csv')
                                                 url: `https://sandbox.healthgorilla.com/fhir/DocumentReference/$p360-search?patient=${pId}&_format=json`,
                                                 headers: {
                                                     Authorization: 'Bearer ',
-                                                    Prefer: 'respond-async',
-                                                    Cookie:
-                                                        'AWSALB=TvZnKgbflCqBQO3S9OHYyMwM3cllOielsr67GZG/xguVxdb7iLQj4Z/0t8h26MbIGMejfLbE0fHCXvxIFYsprhLeSft4e4RIeKrpzn5dfJ7GPVrBoIAZ+bRi/ae8; AWSALBCORS=TvZnKgbflCqBQO3S9OHYyMwM3cllOielsr67GZG/xguVxdb7iLQj4Z/0t8h26MbIGMejfLbE0fHCXvxIFYsprhLeSft4e4RIeKrpzn5dfJ7GPVrBoIAZ+bRi/ae8; hg.lang=en',
+                                                    Prefer: 'respond-async'
                                                 },
                                             };
 
@@ -165,9 +155,7 @@ fs.createReadStream('report.csv')
                                                 url: `https://sandbox.healthgorilla.com${locationUrl}?_format=json`,
                                                 headers: {
                                                     Authorization: 'Bearer ',
-                                                    Prefer: 'respond-async',
-                                                    Cookie:
-                                                        'AWSALB=p2KX93k5lb+colIFJt5zLRsPw948nRujDdF+8n16W7GeS7CB8covkwFYOmBqnOpZPQdosYFhJ45KkQAhq61KMJEWCE/PAOqSnNALTvCZ/JX+pTVBsagy803zYZjd; AWSALBCORS=p2KX93k5lb+colIFJt5zLRsPw948nRujDdF+8n16W7GeS7CB8covkwFYOmBqnOpZPQdosYFhJ45KkQAhq61KMJEWCE/PAOqSnNALTvCZ/JX+pTVBsagy803zYZjd; hg.lang=en',
+                                                    Prefer: 'respond-async'
                                                 },
                                             };
 
@@ -190,9 +178,6 @@ fs.createReadStream('report.csv')
                             .catch(function (error) {
                                 console.log('get csv data error case +++', error);
                             });
-
-
-                        
                     }
                 })
                 .catch(function (error) {
