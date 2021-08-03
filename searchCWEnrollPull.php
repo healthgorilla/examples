@@ -1,11 +1,10 @@
 <?php
 $token = 'PUT BEARER TOKEN HERE';
 
-
 function readCSV() {
     $file = fopen("Patient.csv","r");
     $patientArray = array();
-    for($i=0; $i<9000; $i++) {
+    for ($i=0; $i<9000; $i++) {
         $patientArray[] = fgets($file);
         $patientArray[$i] = str_replace("\n",'',$patientArray[$i]);
         $patientArray[$i] = trim($patientArray[$i]);
@@ -24,7 +23,7 @@ function readCSV() {
 /**
  * cwEnroll
  * 
- * enroll new or matching
+ * Enroll patient into CommonWell MPI as new or matching person
  */
 function cwEnroll($type,$patientId = null, $cwId = null) {
     global $token;
@@ -45,8 +44,7 @@ function cwEnroll($type,$patientId = null, $cwId = null) {
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => array(
             'Content-Type: application/json',
-            'Authorization: Bearer '.$token,
-            'Cookie: AWSALB=gHhkaPtMB0NEmUU5vOhxUJlqasdN/8LcToQiYU21Gsg3bZ0S1Mwz1WiN33Qjta3td/xKpC/VSnvawFPzjAcKdhBlXZb0MLMn7bpvhLYFX961JdBeN+rEFI4yDoP0; AWSALBCORS=gHhkaPtMB0NEmUU5vOhxUJlqasdN/8LcToQiYU21Gsg3bZ0S1Mwz1WiN33Qjta3td/xKpC/VSnvawFPzjAcKdhBlXZb0MLMn7bpvhLYFX961JdBeN+rEFI4yDoP0; hg.lang=en'
+            'Authorization: Bearer '.$token
         ),
     ));
 
@@ -82,8 +80,7 @@ function cwSearch($patientId = null) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => array(
-            'Authorization: Bearer '.$token,
-        'Cookie: AWSELB=8FFB01EB0AA8CF41CC1C5404B522FE6EC9CF5C707C94999411CFFBDEC6B38571F7AC7DA10291F39CE63615B5924E74859510D41B8489B2147F4128EA2281F7ED25179614FE; AWSELBCORS=8FFB01EB0AA8CF41CC1C5404B522FE6EC9CF5C707C94999411CFFBDEC6B38571F7AC7DA10291F39CE63615B5924E74859510D41B8489B2147F4128EA2281F7ED25179614FE; hg.lang=en'
+            'Authorization: Bearer '.$token
         ),
     ));
 
@@ -133,8 +130,7 @@ function cwLookup($patientId = null) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => array(
-            'Authorization: Bearer '.$token,
-            'Cookie: AWSELB=8FFB01EB0AA8CF41CC1C5404B522FE6EC9CF5C707C94999411CFFBDEC6B38571F7AC7DA10291F39CE63615B5924E74859510D41B8489B2147F4128EA2281F7ED25179614FE; AWSELBCORS=8FFB01EB0AA8CF41CC1C5404B522FE6EC9CF5C707C94999411CFFBDEC6B38571F7AC7DA10291F39CE63615B5924E74859510D41B8489B2147F4128EA2281F7ED25179614FE; hg.lang=en'
+            'Authorization: Bearer '.$token
         ),
     ));
 
@@ -172,8 +168,7 @@ function asyncSearch($patientID = null) {
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => array(
             'Authorization: Bearer '.$token,
-            'Prefer: respond-async',
-            'Cookie: AWSALB=SZ5gOV3K3/kqk/2Qxohnb7cBt6eFegl1P968U2It3EW60KfTAqs48h9xA74loxNR9H4yZyUwB30HyWeuGm7gZ5U/9Tbgcfr9O9WGC4Ksro441oZVDxBB/o3HvAFG; AWSALBCORS=SZ5gOV3K3/kqk/2Qxohnb7cBt6eFegl1P968U2It3EW60KfTAqs48h9xA74loxNR9H4yZyUwB30HyWeuGm7gZ5U/9Tbgcfr9O9WGC4Ksro441oZVDxBB/o3HvAFG; hg.lang=en'
+            'Prefer: respond-async'
         ),
         ));
     
@@ -223,8 +218,7 @@ function getAsyncResults($searchLocation = null, $patientId = null) {
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$token,
-                'Content-Type: application/xml',
-                'Cookie: AWSALB=iBbEedcIFm4xtZuPnITVSx0fO//Mj8HEDW0S7GTdiHwVcVWltd379V/gpzTnNR7DCxs4q93NuJdAV7u2qQN1eFB25eSB0qxC4odepuMepsm6WmrszjrDS9fsL//v; AWSALBCORS=iBbEedcIFm4xtZuPnITVSx0fO//Mj8HEDW0S7GTdiHwVcVWltd379V/gpzTnNR7DCxs4q93NuJdAV7u2qQN1eFB25eSB0qxC4odepuMepsm6WmrszjrDS9fsL//v; hg.lang=en'
+                'Content-Type: application/xml'
             ),
         ));
 
@@ -262,8 +256,7 @@ function processUrl($i = null, $patientId = null, $url = null,$organization = nu
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => array(
             'Authorization: Bearer '.$token,
-            'Content-Type: application/xml',
-            'Cookie: AWSALB=xmIJp576TlzyKWkMHIkbdURsSvtpEKi012Dsmxafp2n/d9sNNBf0vIJVeQe8aEaxNaZRKGIGo6YyIcoXNBXhtk7ZMxbxtitGfP+yRNLLJYSgzPOE8kPULnZM6jJ1; AWSALBCORS=xmIJp576TlzyKWkMHIkbdURsSvtpEKi012Dsmxafp2n/d9sNNBf0vIJVeQe8aEaxNaZRKGIGo6YyIcoXNBXhtk7ZMxbxtitGfP+yRNLLJYSgzPOE8kPULnZM6jJ1; hg.lang=en'
+            'Content-Type: application/xml'
         ),
     ));
 
@@ -304,16 +297,11 @@ function processResults($results = null, $patientId = null) {
             processUrl($i, $patientId, $url,$organization);
             $i++;
         }
-        
-        
-        
-       
     }// endforeach ($results['entry'] as $entry)
     return true;
     
     
 }
-
 
 function process_Patients() {
     $patients = readCSV();
@@ -336,13 +324,6 @@ function process_Patients() {
         
     } //end foreach($patients as $patient)
     echo "<h2>PROCESS COMPLETE</h2>";
-    
-
-    
-
-
-    
-
 }
 
 ?>
