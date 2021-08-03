@@ -58,7 +58,6 @@ fs.createReadStream('report.csv')
 
             console.log('patient api call before +++');
 
-
             const data = {
                 name: { given: fName, family: lName },
                 birthDate: dob,
