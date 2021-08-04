@@ -9,6 +9,5 @@ In this directory, you can find resources for:
 
 # Need help with APIs?
 Get started with [Health Gorilla API Docs](https://developer.healthgorilla.com/docs)
-
 [API reference guides](https://developer.healthgorilla.com/reference/getting-started-with-apis) available on the Health Gorilla website
 
