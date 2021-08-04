@@ -1,0 +1,353 @@
+{
+    "resourceType": "RequestGroup",
+    "id": "73f7995fd1005eb930885858",
+    "meta": {
+        "lastUpdated": "2020-10-29T01:57:13.526+00:00",
+        "profile": [
+            "https://healthgorilla.com/fhir/StructureDefinition/hg-order"
+        ]
+    },
+    "contained": [
+        {
+            "resourceType": "Account",
+            "id": "1",
+            "meta": {
+                "profile": [
+                    "https://healthgorilla.com/fhir/StructureDefinition/hg-order-account"
+                ]
+            },
+            "type": {
+                "coding": [
+                    {
+                        "system": "https://www.healthgorilla.com/order-billto",
+                        "code": "thirdParty",
+                        "display": "Third Party"
+                    }
+                ],
+                "text": "Third Party"
+            },
+            "coverage": [
+                {
+                    "coverage": {
+                        "reference": "#2"
+                    },
+                    "priority": 1
+                }
+            ]
+        },
+        {
+            "resourceType": "Coverage",
+            "id": "2",
+            "identifier": [
+                {
+                    "value": "74766TEST95987"
+                }
+            ],
+            "status": "active",
+            "subscriber": {
+                "reference": "Patient/d08c845f6150bd6ae8354f52",
+                "display": "Test TestTwin"
+            },
+            "beneficiary": {
+                "reference": "Patient/d08c845f6150bd6ae8354f52",
+                "display": "Test TestTwin"
+            },
+            "relationship": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/policyholder-relationship",
+                        "code": "self",
+                        "display": "Self"
+                    }
+                ],
+                "text": "Self"
+            },
+            "payor": [
+                {
+                    "reference": "Organization/ip-2",
+                    "display": "AETNA"
+                }
+            ],
+            "grouping": {
+                "group": "GRP94847TEST7365"
+            }
+        },
+        {
+            "resourceType": "Practitioner",
+            "id": "3",
+            "meta": {
+                "lastUpdated": "2020-09-24T14:20:28.362+00:00",
+                "profile": [
+                    "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner",
+                    "https://healthgorilla.com/fhir/StructureDefinition/hg-user"
+                ]
+            },
+            "identifier": [
+                {
+                    "system": "https://www.healthgorilla.com",
+                    "value": "471d8d5e4190383ca207a2c4"
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "system": "http://hl7.org/fhir/v2/0203",
+                                "code": "PRN",
+                                "display": "Passport number"
+                            }
+                        ],
+                        "text": "Passport number"
+                    },
+                    "system": "http://hl7.org/fhir/sid/us-npi",
+                    "value": "1639311509"
+                }
+            ],
+            "active": true,
+            "name": [
+                {
+                    "use": "official",
+                    "text": "Sajad Zalzala, M.D.",
+                    "family": "Zalzala",
+                    "given": [
+                        "Sajad"
+                    ],
+                    "suffix": [
+                        "M.D."
+                    ]
+                }
+            ],
+            "telecom": [
+                {
+                    "system": "fax",
+                    "value": "(214) 481-4863",
+                    "use": "work"
+                }
+            ],
+            "address": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+                            "extension": [
+                                {
+                                    "url": "latitude",
+                                    "valueDecimal": 32.819018
+                                },
+                                {
+                                    "url": "longitude",
+                                    "valueDecimal": -96.820855
+                                }
+                            ]
+                        }
+                    ],
+                    "use": "work",
+                    "text": "3824 Cedar Springs Rd, Dallas, TX 75219",
+                    "line": [
+                        "3824 Cedar Springs Rd"
+                    ],
+                    "city": "Dallas",
+                    "state": "TX",
+                    "postalCode": "75219",
+                    "country": "USA"
+                }
+            ]
+        },
+        {
+            "resourceType": "Organization",
+            "id": "4",
+            "identifier": [
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "system": "http://hl7.org/fhir/v2/0203",
+                                "code": "AN",
+                                "display": "Account number"
+                            }
+                        ],
+                        "text": "Account Number"
+                    },
+                    "value": "97514228"
+                }
+            ],
+            "active": true,
+            "type": [
+                {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/organization-type",
+                            "code": "team",
+                            "display": "Organizational team"
+                        }
+                    ],
+                    "text": "Organizational team"
+                },
+                {
+                    "coding": [
+                        {
+                            "system": "https://www.healthgorilla.com/fhir/organization-type",
+                            "code": "PRL",
+                            "display": "Practice Location"
+                        }
+                    ],
+                    "text": "Practice Location"
+                }
+            ],
+            "name": "Twin - 1111 Test Twin Rd, St. Paul, MN",
+            "telecom": [
+                {
+                    "system": "fax",
+                    "value": "(214) 481-4863"
+                }
+            ],
+            "address": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+                            "extension": [
+                                {
+                                    "url": "latitude",
+                                    "valueDecimal": 32.819018
+                                },
+                                {
+                                    "url": "longitude",
+                                    "valueDecimal": -96.820855
+                                }
+                            ]
+                        }
+                    ],
+                    "text": "Twin - 1111 Test Twin Rd, St. Paul, MN",
+                    "line": [
+                        "1111 Test Twin Rd"
+                    ],
+                    "city": "St. Paul",
+                    "state": "MN",
+                    "postalCode": "75219",
+                    "country": "USA"
+                }
+            ],
+            "partOf": {
+                "reference": "Organization/t-bfbd305e03c2f3b166da009f",
+                "display": "Test Twin"
+            }
+        }
+    ],
+    "extension": [
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/requestgroup-authorizedBy",
+            "valueReference": {
+                "reference": "Organization/tl-bfbd305e03c2f3b166da009f-bfbd305e352510d166eb9d66",
+                "display": "Test Twin"
+            }
+        },
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/requestgroup-account",
+            "valueReference": {
+                "reference": "#1"
+            }
+        },
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/requestgroup-performer",
+            "valueReference": {
+                "reference": "Organization/f-fd5f5652a127aeca09d3c01b",
+                "display": "Quest - AZ, Tempe"
+            }
+        },
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/requestgroup-requester",
+            "extension": [
+                {
+                    "url": "agent",
+                    "valueReference": {
+                        "reference": "#3"
+                    }
+                },
+                {
+                    "url": "onBehalfOf",
+                    "valueReference": {
+                        "reference": "#4"
+                    }
+                }
+            ]
+        },
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/requestgroup-reasoncode",
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/sid/icd-10",
+                        "code": "F55.3",
+                        "display": "Abuse of steroids or hormones"
+                    }
+                ],
+                "text": "Abuse of steroids or hormones"
+            }
+        },
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/requestgroup-reasoncode",
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/sid/icd-10",
+                        "code": "Z79.890",
+                        "display": "Hormone replacement therapy"
+                    }
+                ],
+                "text": "Hormone replacement therapy"
+            }
+        },
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/requestgroup-deliveryOptions",
+            "extension": [
+                {
+                    "url": "electronic",
+                    "valueBoolean": true
+                }
+            ]
+        }
+    ],
+    "identifier": [
+        {
+            "system": "https://www.healthgorilla.com",
+            "value": "73f7995fd1005eb930885858"
+        },
+        {
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/v2/0203",
+                        "code": "ACSN",
+                        "display": "Accession ID"
+                    }
+                ],
+                "text": "Lab Reference ID"
+            },
+            "value": "84454"
+        }
+    ],
+    "status": "completed",
+    "intent": "order",
+    "subject": {
+        "reference": "Patient/d08c845f6150bd6ae8354f52",
+        "display": "Test TestTwin"
+    },
+    "authoredOn": "2020-10-28T22:59:34+00:00",
+    "author": {
+        "reference": "Practitioner/471d8d5e4190383ca207a2c4",
+        "display": "Sajad Zalzala"
+    },
+    "note": [
+        {
+            "text": "Additional Test order. Please ignore and result back"
+        }
+    ],
+    "action": [
+        {
+            "resource": {
+                "reference": "ProcedureRequest/73f7995fd1005eb930885858-899",
+                "display": "TSH"
+            }
+        }
+    ]
+}

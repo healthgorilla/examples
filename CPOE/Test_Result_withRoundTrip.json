@@ -1,0 +1,101 @@
+{
+    "resourceType": "DiagnosticReport",
+    "id": "79219a5fd4bb79598400acec",
+    "meta": {
+        "lastUpdated": "2020-10-29T01:57:13.303+00:00"
+    },
+    "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Twin Test Result 10/29/2020 01:57 AM</div>"
+    },
+    "extension": [
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/diagnosticreport-reportingPriority",
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "394848005",
+                        "display": "Normal priority (qualifier value)"
+                    }
+                ],
+                "text": "Normal priority (qualifier value)"
+            }
+        },
+        {
+            "url": "https://www.healthgorilla.com/fhir/StructureDefinition/diagnosticreport-interpretation",
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/v2/0078",
+                        "code": "N",
+                        "display": "Normal"
+                    }
+                ],
+                "text": "Normal"
+            }
+        }
+    ],
+    "identifier": [
+        {
+            "system": "https://www.healthgorilla.com",
+            "value": "79219a5fd4bb79598400acec"
+        },
+        {
+            "type": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/v2/0203",
+                        "code": "ACSN",
+                        "display": "Accession ID"
+                    }
+                ],
+                "text": "Accession Number"
+            },
+            "value": "EN231742Y"
+        }
+    ],
+    "basedOn": [
+        {
+            "reference": "ProcedureRequest/73f7995fd1005eb930885858-899",
+            "display": "TSH"
+        }
+    ],
+    "status": "final",
+    "category": {
+        "coding": [
+            {
+                "system": "http://hl7.org/fhir/v2/0074",
+                "code": "LAB",
+                "display": "Laboratory"
+            }
+        ],
+        "text": "Laboratory"
+    },
+    "code": {
+        "text": "TSH, Clinical PDF Report EN231742Y-1"
+    },
+    "subject": {
+        "reference": "Patient/d08c845f6150bd6ae8354f52",
+        "display": "Test Twin"
+    },
+    "issued": "2020-10-29T01:54:00+00:00",
+    "performer": [
+        {
+            "actor": {
+                "reference": "Organization/f-4dcb0e52017babaa84b65719",
+                "display": "Quest"
+            }
+        }
+    ],
+    "result": [
+        {
+            "reference": "Observation/79219a5fd4bb79598400acec-1",
+            "display": "TSH"
+        },
+        {
+            "reference": "Observation/79219a5fd4bb79598400acec-2",
+            "display": "Clinical PDF Report EN231742Y-1"
+        }
+    ]
+}
