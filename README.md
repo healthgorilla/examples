@@ -8,6 +8,6 @@ In this directory, you can find resources for:
 - [CPOE](https://github.com/healthgorilla/examples/tree/main/CPOE) resources, which will help refine your CPOE ordering and results experience
 
 # Need help with APIs?
-Get started with [Health Gorilla API Docs](https://developer.healthgorilla.com/docs)
+Get started with [Health Gorilla API Docs ](https://developer.healthgorilla.com/docs) 
 [API reference guides](https://developer.healthgorilla.com/reference/getting-started-with-apis) available on the Health Gorilla website
 
