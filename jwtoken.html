@@ -59,6 +59,9 @@ function createToken(event) {
     event.preventDefault();
     
     expirationDate = new Date(expiration.value).getTime();
+    expirationDate = expirationDate/1000;
+    var d = new Date();
+    now = (d.getTime()-d.getMilliseconds())/1000;
     
     var header = {
         "alg": "HS256",
@@ -71,7 +74,7 @@ function createToken(event) {
         "aud": audience.value,
         "iss": issuer.value,
         "sub": sub.value,
-        "iat": Date.now(),
+        "iat": now,
         "exp": expirationDate
     };
 
