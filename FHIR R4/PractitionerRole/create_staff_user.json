@@ -1,0 +1,91 @@
+{
+    "resourceType": "PractitionerRole",
+    "meta": {
+      "profile":[
+        "https://healthgorilla.com/fhir/StructureDefinition/hg-user"
+      ],
+      "tag":[
+        {
+           "system":"https://www.healthgorilla.com",
+           "code":"VERIFIED"
+        },
+        {
+           "system":"https://www.healthgorilla.com",
+           "code":"NO_SUBSCRIPTIONS"
+        }
+     ]
+    },
+    "active": true,
+    "practitioner": {
+      "reference": "#1"
+    },
+    "code": [
+      {
+        "coding": [
+          {
+            "system": "https://www.healthgorilla.com/administrative-role",
+            "code": "officeManager",
+            "display": "Office Manager"
+          }
+        ]
+      }
+    ],
+    "contained": [
+      {
+        "resourceType": "Practitioner",
+        "id": "1",
+        "meta": {
+          "lastUpdated": "2021-07-28T12:33:05.136+03:00",
+          "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner",
+            "https://healthgorilla.com/fhir/StructureDefinition/hg-practitioner"
+          ]
+        },
+        "identifier":[
+            {
+               "type":{
+                  "coding":[
+                     {
+                        "system":"http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code":"PRN",
+                        "display":"Passport number"
+                     }
+                  ],
+                  "text":"Passport number"
+               },
+               "value":"sso-identifier99",
+               "assigner":{
+                  "reference":"Organization/f-<SSO FACILITY ID>"
+               }
+            }
+         ],
+         "name": [
+          {
+            "use": "official",
+            "text": "<FULL NAME>",
+            "family": "<LAST NAME>",
+            "given": [
+              "<FIRST NAME>"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "email",
+            "value": "<USER EMAIL>",
+            "use": "work"
+          }
+        ],
+        "extension": [
+          {
+            "url": "https://www.healthgorilla.com/fhir/R4/StructureDefinition/hg-practitioner-login",
+            "valueString": "<USERNAME>"
+          },
+          {
+            "url": "https://www.healthgorilla.com/fhir/R4/StructureDefinition/hg-practitioner-password",
+            "valueString": "<PASSWORD>"
+          }
+        ]
+      }
+    ]
+  }
