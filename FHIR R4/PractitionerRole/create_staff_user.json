@@ -30,6 +30,21 @@
         ]
       }
     ],
+    "extension":[
+      {
+        "url": "https://www.healthgorilla.com/fhir/R4/StructureDefinition/practitionalrole-security-role",
+        "valueCodeableConcept": {
+            "coding": [
+                {
+                    "system": "https://www.healthgorilla.com/security-role",
+                    "code": "administrator",
+                    "display": "Administrator"
+                }
+            ],
+            "text": "Administrator"
+        }
+    }
+    ],
     "contained": [
       {
         "resourceType": "Practitioner",
